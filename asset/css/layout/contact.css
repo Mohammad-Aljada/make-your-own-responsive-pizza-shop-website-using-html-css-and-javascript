@@ -1,0 +1,13 @@
+/* contact */
+.connect {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .connect-text span {
+    color: var(--main-color);
+    font-weight: 500;
+  }
+  .connect-text h2 {
+    font-size: var(--h2-font);
+  }
