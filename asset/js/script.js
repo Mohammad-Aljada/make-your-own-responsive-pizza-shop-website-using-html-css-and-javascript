@@ -28,27 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Highlight active navigation link based on section visibility
-    const navLinks = document.querySelectorAll("nav ul li a");
-    const observerOptions = {
-      threshold: 0.7,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").substring(1) === entry.target.id) {
-              link.classList.add("active");
-            }
-          });
+    const navLinks = document.querySelectorAll(".navbar li a");
+    window.addEventListener("scroll", () => {
+      let activeLinkFound = false;
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight * 0.3) {
+          if (!activeLinkFound) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href").substring(1) === section.id) {
+                link.classList.add("active");
+              }
+            });
+            activeLinkFound = true;
+          }
         }
       });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      observer.observe(section);
+      if (!activeLinkFound) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+      }
     });
+    const homeLink = document.querySelector('a[href="#home"]');
+    if (homeLink) {
+      homeLink.classList.add("active");
+    }
   }
 
   // Dark mode toggle

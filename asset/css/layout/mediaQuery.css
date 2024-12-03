@@ -9,12 +9,8 @@
   }
 }
 @media (max-width: 768px) {
-  section {
-    padding: 50px 8%;
-  }
-
   #menu-icon {
-    display: initial;
+    display: block; /* Changed from 'initial' to 'block' */
     color: var(--text-color);
   }
   header .navbar {
@@ -36,6 +32,9 @@
     padding: 1.5rem;
     display: block;
     background: var(--bg-color);
+  }
+  .home {
+    min-height: 0;
   }
 }
 @media (max-width: 715px) {
@@ -68,5 +67,8 @@
   }
   .home-text {
     padding-top: 4rem;
+  }
+  .navbar {
+    flex-direction: column;
   }
 }

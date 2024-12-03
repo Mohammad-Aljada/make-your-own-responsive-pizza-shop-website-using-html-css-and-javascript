@@ -29,6 +29,9 @@ header {
 .navbar a:hover {
   color: var(--main-color);
 }
+.navbar li a.active {
+  color: var(--main-color);
+}
 #menu-icon {
   font-size: 2rem;
   cursor: pointer;
